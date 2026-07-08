@@ -1,0 +1,266 @@
+@import url("https://fonts.googleapis.com/css?family=Comfortaa");
+
+html,
+body {
+  margin: 0;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  font-family: "Comfortaa", cursive;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+}
+
+#container #score {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 10vh;
+  transition: transform 0.5s ease;
+  color: #333344;
+  transform: translatey(-200px) scale(1);
+}
+
+#container #game {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#container .game-over {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#container .game-over * {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0;
+  transform: translatey(-50px);
+  color: #333344;
+}
+
+#container .game-over h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 40px;
+}
+
+/* Start / ready screen */
+#container .game-ready {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#container .game-ready .game-title,
+#container .game-ready .start-panel,
+#container .game-ready .how-to-play,
+#container .game-ready #instructions,
+#container .game-ready #start-button {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0;
+  transform: translatey(-30px);
+}
+
+#container .game-ready .game-title {
+  margin: 0;
+  font-size: 3em;
+  color: #333344;
+}
+
+#container .game-ready .start-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 360px;
+}
+
+#container .game-ready .how-to-play {
+  max-width: 340px;
+  color: #333344;
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+
+#container .game-ready .how-to-play p {
+  margin: 6px 0;
+}
+
+#container .game-ready #instructions {
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #333344;
+  font-size: 0.95em;
+  font-weight: 700;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(51, 51, 68, 0.15);
+}
+
+#container .game-ready #start-button {
+  border: 3px solid #333344;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #333344;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+#container #instructions {
+  opacity: 0;
+}
+
+#container #instructions.hide {
+  opacity: 0 !important;
+}
+
+/* Top corner buttons */
+#container #sound-toggle,
+#container #pause-btn {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.85);
+  font-size: 1.2em;
+  cursor: pointer;
+  z-index: 5;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+#container #sound-toggle {
+  left: 20px;
+  top: 20px;
+}
+
+#container #pause-btn {
+  right: 20px;
+  top: 20px;
+}
+
+/* Pause menu */
+#container #pause-menu {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(51, 51, 68, 0.75);
+  z-index: 10;
+}
+
+#container #pause-menu.show {
+  display: flex;
+}
+
+#container #pause-menu h2 {
+  color: white;
+  margin: 0 0 10px 0;
+}
+
+#container #pause-menu button {
+  padding: 12px 30px;
+  font-size: 1em;
+  font-weight: 700;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: "Comfortaa", cursive;
+}
+
+#container #resume-btn {
+  background-color: #a3d977;
+  color: #333344;
+}
+
+#container #menu-btn {
+  background-color: #eee;
+  color: #333344;
+}
+
+/* State-driven visibility */
+#container.playing #score,
+#container.resetting #score,
+#container.paused #score {
+  transform: translatey(0px) scale(1);
+}
+
+#container.playing #instructions {
+  opacity: 1;
+}
+
+#container.playing #sound-toggle,
+#container.playing #pause-btn,
+#container.paused #sound-toggle {
+  display: flex;
+}
+
+#container.ready .game-ready .game-title,
+#container.ready .game-ready .start-panel,
+#container.ready .game-ready .how-to-play,
+#container.ready .game-ready #instructions,
+#container.ready .game-ready #start-button {
+  opacity: 1;
+  transform: translatey(0);
+}
+
+#container.ready .game-ready .start-panel {
+  transition-delay: 0.05s;
+}
+
+#container.ready .game-ready .how-to-play {
+  transition-delay: 0.1s;
+}
+
+#container.ready .game-ready #instructions {
+  transition-delay: 0.15s;
+}
+
+#container.ready .game-ready #start-button {
+  transition-delay: 0.2s;
+}
+
+#container.ended #score {
+  transform: translatey(6vh) scale(1.5);
+}
+
+#container.ended .game-over * {
+  opacity: 1;
+  transform: translatey(0);
+}
+
+#container.ended .game-over p {
+  transition-delay: 0.3s;
+}
