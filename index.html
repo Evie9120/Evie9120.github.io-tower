@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tower Blocks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+
+    <div id="container">
+        <div id="game"></div>
+
+        <button id="sound-toggle" title="Toggle sound">🔊</button>
+        <button id="pause-btn" title="Pause">⏸</button>
+
+        <div id="score">0</div>
+
+        <div class="game-over">
+            <h2>Game Over</h2>
+            <p>You did great, you're the best.</p>
+            <p>Click or spacebar to start again</p>
+        </div>
+
+        <div class="game-ready" id="game-ready">
+            <h1 class="game-title">Tower Blocks</h1>
+            <div class="start-panel">
+                <div class="how-to-play">
+                    <p>🧱 Each block slides back and forth above the tower.</p>
+                    <p>🎯 Click or press spacebar to drop it into place.</p>
+                </div>
+                <div id="instructions">Click (or press the spacebar) to place the block</div>
+                <div id="start-button">Start</div>
+            </div>
+        </div>
+
+        <div id="pause-menu">
+            <h2>Paused</h2>
+            <button id="resume-btn">RESUME</button>
+            <button id="menu-btn">MAIN MENU</button>
+        </div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js'></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
